@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/PrimaryTextBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true"
+        android:text="Sensor Detector"
+        android:textColor="#fff"
+        android:textSize="24dp"/>
+
+    <TextView
+        style="@style/PrimaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:text="Crafted by Benevolence Inc."
+        android:textColor="#fff"
+        android:textSize="18dp"/>
+
+</RelativeLayout>

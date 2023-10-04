@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Sensor Detector</string>
+    <string name="ir">IR</string>
+    <string name="gyroscope">Gyroscope</string>
+    <string name="accelerometer">Accelerometer</string>
+    <string name="ambient_temperature">Ambient Temperature</string>
+    <string name="magnetic">Magnetic</string>
+    <string name="light">Light</string>
+    <string name="proximity">Proximity</string>
+    <string name="pressure">Pressure</string>
+    <string name="game_rotation">Game Rotation Vector</string>
+    <string name="step_detector">Step Detector</string>
+    <string name="gravity">Gravity</string>
+    <string name="linear_accelaration">Linear Acceleration</string>
+    <string name="all">All</string>
+    <string name="app_ad_id">ca-app-pub-3271155424547397~2255460656</string>
+    <string name="banner_id">ca-app-pub-3271155424547397/4470560455</string>
+    <string name="interstitial_id">ca-app-pub-3271155424547397/8956600377</string>
+
+</resources>
