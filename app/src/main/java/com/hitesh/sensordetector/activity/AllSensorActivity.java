@@ -1,8 +1,5 @@
 package com.hitesh.sensordetector.activity;
 
-
-
-
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -46,8 +43,8 @@ public class AllSensorActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycleView);
-        RecycleViewAdapter recycleViewAdapter = new RecycleViewAdapter(list,getApplicationContext());
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        RecycleViewAdapter recycleViewAdapter = new RecycleViewAdapter(list, getApplicationContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recycleViewAdapter);

@@ -1,6 +1,5 @@
 package com.hitesh.sensordetector.activity;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.ConsumerIrManager;
@@ -24,7 +23,6 @@ import com.google.android.gms.ads.AdView;
 import com.benevolenceinc.sensordetector.R;
 import com.hitesh.sensordetector.progressindicator.AVLoadingIndicatorView;
 
-
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
@@ -36,9 +34,9 @@ import java.util.function.Consumer;
  */
 public class DetectSensorActivity extends AppCompatActivity {
     private SensorManager mSensorManager;
-    private TextView tvTitle,tvSuccessMessage,tvName,tvDescription;
+    private TextView tvTitle, tvSuccessMessage, tvName, tvDescription;
     private ImageView ivSuccess;
-    int type,descriptionIndex;
+    int type, descriptionIndex;
     String sensorName;
     private AdView mAdView;
 
@@ -51,8 +49,9 @@ public class DetectSensorActivity extends AppCompatActivity {
         setContentView(R.layout.detail_layout);
         Random random = new Random();
         int loader = random.nextInt(6);
-        String[] loaderArray = {"BallGridPulseIndicator","BallClipRotatePulseIndicator","SquareSpinIndicator","PacmanIndicator",
-        "BallTrianglePathIndicator","LineScalePartyIndicator"};
+        String[] loaderArray = { "BallGridPulseIndicator", "BallClipRotatePulseIndicator", "SquareSpinIndicator",
+                "PacmanIndicator",
+                "BallTrianglePathIndicator", "LineScalePartyIndicator" };
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -123,10 +122,10 @@ public class DetectSensorActivity extends AppCompatActivity {
             public void run() {
                 indicatorView.setVisibility(View.GONE);
                 linearLayout.setVisibility(View.VISIBLE);
-                if(type == 1306){
+                if (type == 1306) {
                     detectIR();
-                }else{
-                    detectSensor(type,sensorName,descriptionIndex);
+                } else {
+                    detectSensor(type, sensorName, descriptionIndex);
                 }
 
             }
@@ -142,7 +141,8 @@ public class DetectSensorActivity extends AppCompatActivity {
             "A light sensor reports the current illumination in SI lux units.",
             "A proximity sensor reports the distance from the sensor to the closest visible surface.",
             "A pressure sensor (also known as barometer) reports the atmospheric pressure in hectopascal (hPa).",
-            "A game rotation vector sensor is similar to a rotation vector sensor but not using the geomagnetic field. " +
+            "A game rotation vector sensor is similar to a rotation vector sensor but not using the geomagnetic field. "
+                    +
                     "Therefore the Y axis doesn't point north but instead to some other reference. " +
                     "That reference is allowed to drift by the same order of magnitude as the gyroscope drifts around the Z axis.",
             "A step detector generates an event each time a step is taken by the user.",
@@ -151,34 +151,40 @@ public class DetectSensorActivity extends AppCompatActivity {
             "The IR stands for infrared.Most remote controls use infrared to communicate with home entertainment components."
     };
 
-    public void detectIR(){
+    public void detectIR() {
         ConsumerIrManager irManager = (ConsumerIrManager) getSystemService(CONSUMER_IR_SERVICE);
-        if (irManager.hasIrEmitter()) {
-           present();
+        if (irManager != null) {
+            if (irManager.hasIrEmitter()) {
+                present();
+            } else {
+                notPresent();
+            }
         } else {
             notPresent();
         }
     }
 
-    public void detectSensor(int type, String sensorName, int descriptionIndex){
+    public void detectSensor(int type, String sensorName, int descriptionIndex) {
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (mSensorManager.getDefaultSensor(type) != null){
-           present();
+        if (mSensorManager.getDefaultSensor(type) != null) {
+            present();
         } else {
-         notPresent();
+            notPresent();
         }
     }
-    public void present(){
-        tvSuccessMessage.setText("Kudos! You have the "+sensorName+" sensor.");
-        tvName.setText("Name :"+"\n"+mSensorManager.getDefaultSensor(type).getName());
+
+    public void present() {
+        tvSuccessMessage.setText("Kudos! You have the " + sensorName + " sensor.");
+        tvName.setText("Name :" + "\n" + mSensorManager.getDefaultSensor(type).getName());
         tvDescription.setText(descriptionArray[descriptionIndex]);
-        ivSuccess.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.right));
+        ivSuccess.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.right));
     }
-    public void notPresent(){
-        tvSuccessMessage.setText("Oops! You don't have the "+sensorName+" sensor.");
+
+    public void notPresent() {
+        tvSuccessMessage.setText("Oops! You don't have the " + sensorName + " sensor.");
         tvName.setText("");
         tvDescription.setText(descriptionArray[descriptionIndex]);
-        ivSuccess.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.wrong));
+        ivSuccess.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wrong));
     }
 }
